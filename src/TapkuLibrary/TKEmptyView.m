@@ -92,6 +92,19 @@
 - (id) initWithFrame:(CGRect)frame {
 	return [self initWithFrame:frame emptyViewImage:TKEmptyViewImageStar title:@"" subtitle:@""];
 }
+-(void) hideViewWithFade:(BOOL)flag {
+	
+	if (flag) {
+		[UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:.5];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+        self.alpha = .0;
+        [UIView commitAnimations];
+		[UIView setAnimationDelegate:self];
+		return;
+	}
+	[self removeFromSuperview];	
+}
 - (void) dealloc {
 	
 	[subtitleLabel release];
